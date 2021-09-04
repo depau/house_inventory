@@ -1,0 +1,54 @@
+{% extends "admin/base_site.html" %}
+{% load i18n l10n admin_urls static %}
+
+{% block extrahead %}
+    {{ block.super }}
+    {{ media }}
+    <script src="{% static 'admin/js/cancel.js' %}" async></script>
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }}
+    move-to-other-location{% endblock %}
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+        &rsaquo; <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
+        &rsaquo; <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
+        &rsaquo; {% translate 'Add shelves to {{ locator }}' %}
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <div>
+                <p><label for="name_prefix">{% translate "Name prefix" %}:</label></p>
+                <p><input type="text" id="name_prefix" name="name_prefix" value="{% translate "Shelf" %}"></p>
+            </div>
+            <div>
+                <p><label for="locator_prefix">{% translate "Locator prefix" %}:</label></p>
+                <p><input type="text" id="locator_prefix" name="locator_prefix" value=""></p>
+            </div>
+            <div>
+                <p><label for="columns">{% translate "Columns" %}:</label></p>
+                <p><input type="number" id="columns" name="columns" min="0" value="1"></p>
+            </div>
+            <div>
+                <p><label for="rows">{% translate "Shelves / Rows" %}:</label></p>
+                <p><input type="number" id="rows" name="rows" min="0" value="1"></p>
+            </div>
+        </div>
+        <div>
+            {% for obj in queryset %}
+                <input type="hidden" name="{{ action_checkbox_name }}" value="{{ obj.pk|unlocalize }}">
+            {% endfor %}
+            <input type="hidden" name="action" value="create_shelves">
+            <input type="hidden" name="post" value="yes">
+            <input type="submit" value="{% translate 'Create' %}">
+            <a href="#" class="button cancel-link">{% translate "Cancel" %}</a>
+        </div>
+    </form>
+{% endblock %}

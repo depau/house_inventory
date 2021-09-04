@@ -1,0 +1,52 @@
+{% extends "admin/base_site.html" %}
+{% load i18n l10n admin_urls static %}
+
+{% block extrahead %}
+    {{ block.super }}
+    {{ media }}
+    <script src="{% static 'admin/js/cancel.js' %}" async></script>
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }}
+    move-to-other-location{% endblock %}
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+        &rsaquo; <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
+        &rsaquo; <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
+        &rsaquo; {% translate 'Change {{ objects_name }} category' %}
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <p>{% blocktranslate %}Changing the category for the following {{ objects_name }}:{% endblocktranslate %}</p>
+    <h2>{{ opts.verbose_name_plural|capfirst }}</h2>
+    <ul>
+        {% for obj in queryset %}
+            <li>{{ obj }}</li>
+        {% endfor %}
+    </ul>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="new_category">{% translate "New category" %}: </label>
+            <select id="new_category" name="new_category">
+                <option value="">------</option>
+                {% for category in categories %}
+                    <option value="{{ category.pk }}">{{ category }} ({{ category.name }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            {% for obj in queryset %}
+                <input type="hidden" name="{{ action_checkbox_name }}" value="{{ obj.pk|unlocalize }}">
+            {% endfor %}
+            <input type="hidden" name="action" value="change_category">
+            <input type="hidden" name="post" value="yes">
+            <input type="submit" value="{% translate 'Move' %}">
+            <a href="#" class="button cancel-link">{% translate "Cancel" %}</a>
+        </div>
+    </form>
+{% endblock %}

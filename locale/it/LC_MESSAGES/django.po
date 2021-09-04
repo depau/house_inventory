@@ -1,0 +1,251 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-05 01:14+0200\n"
+"PO-Revision-Date: 2021-09-05 01:16+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0\n"
+
+#: inventory/actions.py:12
+msgid "Move items to another location"
+msgstr "Sposta oggetti in un altro luogo"
+
+#: inventory/actions.py:24
+#, python-format
+msgid "Failed to move %(items)s: no location selected"
+msgstr "Impossibile spostate %(items)s: nessun luogo selezionato"
+
+#: inventory/actions.py:33
+#, python-format
+msgid "Successfully moved %(count)d %(items)s."
+msgstr "Spostati %(count)d %(items)s con successo."
+
+#: inventory/actions.py:40
+#, python-format
+msgid "Moving %(name)s to new location"
+msgstr "Spostamento di %(name)s in un altro luogo"
+
+#: inventory/actions.py:59
+msgid "Change items categories"
+msgstr "Cambia categoria degli oggetti"
+
+#: inventory/actions.py:79
+#, python-format
+msgid "Successfully updated %(count)d %(items)s."
+msgstr "Spostati %(count)d %(items)s con successo."
+
+#: inventory/actions.py:86
+#, python-format
+msgid "Changing %(name)s categories"
+msgstr "Cambiamento categorie di %(name)s"
+
+#: inventory/actions.py:105
+msgid "Create shelves"
+msgstr "Crea ripiani"
+
+#: inventory/actions.py:113
+msgid "Select exactly one location in order to add shelves to it"
+msgstr "Seleziona esattamente un luogo per aggiungervi i ripiani"
+
+#: inventory/actions.py:126
+msgid "This is not Microsoft Excel, stop it."
+msgstr "Questo non è Microsoft Excel, smettila."
+
+#: inventory/actions.py:144
+#, python-format
+msgid "Successfully created %(count)d %(items)s."
+msgstr "Creati %(count)d %(items)s con successo."
+
+#: inventory/actions.py:151
+#, python-format
+msgid "Add shelves to %(name)s"
+msgstr "Aggiungi ripiani a %(name)s"
+
+#: inventory/admin.py:22
+msgid "Inventory management"
+msgstr "Gestione inventario"
+
+#: inventory/admin.py:26 inventory/admin.py:27
+msgid "House inventory"
+msgstr "Inventario casa"
+
+#: inventory/admin.py:60 inventory/list_filters.py:15 inventory/models.py:19
+#: inventory/models.py:49
+msgid "location"
+msgstr "luogo"
+
+#: inventory/admin.py:68 inventory/models.py:32 inventory/models.py:50
+msgid "category"
+msgstr "categoria"
+
+#: inventory/admin.py:73
+msgid "piece"
+msgid_plural "pieces"
+msgstr[0] "pezzo"
+msgstr[1] "pezzi"
+
+#: inventory/admin.py:76
+msgid "Amount"
+msgstr "Quantità"
+
+#: inventory/admin.py:110
+msgid "Locator"
+msgstr "Localizzatore"
+
+#: inventory/apps.py:9
+msgid "inventory"
+msgstr "inventario"
+
+#: inventory/list_filters.py:35
+msgid "container"
+msgstr "contenitore"
+
+#: inventory/list_filters.py:76
+msgid "Any"
+msgstr "Qualsiasi"
+
+#: inventory/list_filters.py:77
+msgid "Expired"
+msgstr "Scaduto"
+
+#: inventory/list_filters.py:80
+msgid "Expires this month"
+msgstr "Scade questo mese"
+
+#: inventory/list_filters.py:84
+msgid "Expires later"
+msgstr "Scade più avanti"
+
+#: inventory/list_filters.py:90
+msgid "Does not expire"
+msgstr "Non scade"
+
+#: inventory/list_filters.py:91
+msgid "Expires"
+msgstr "Scade"
+
+#: inventory/models.py:9 inventory/models.py:26 inventory/models.py:45
+msgid "name"
+msgstr "nome"
+
+#: inventory/models.py:10
+msgid "locator"
+msgstr "localizzatore"
+
+#: inventory/models.py:11 inventory/models.py:46
+msgid "description"
+msgstr "descrizione"
+
+#: inventory/models.py:20
+msgid "locations"
+msgstr "luoghi"
+
+#: inventory/models.py:33
+msgid "categories"
+msgstr "categorie"
+
+#: inventory/models.py:47
+msgid "amount"
+msgstr "quantità"
+
+#: inventory/models.py:48
+msgid "unit"
+msgstr "unità"
+
+#: inventory/models.py:51
+msgid "expiration"
+msgstr "scadenza"
+
+#: inventory/models.py:64
+msgid "item"
+msgstr "oggetto"
+
+#: inventory/models.py:65
+msgid "items"
+msgstr "oggetti"
+
+#: templates/change_category.html:15 templates/create_shelves.html:15
+#: templates/move_to_other_location.html:15
+msgid "Home"
+msgstr "Home"
+
+#: templates/change_category.html:18
+msgid "Change {{ objects_name }} category"
+msgstr "Cambia la categoria di {{ objects_name }}"
+
+#: templates/change_category.html:24
+#, python-format
+msgid "Changing the category for the following %(objects_name)s:"
+msgstr "Cambiamento della categoria dei seguenti %(objects_name)s:"
+
+#: templates/change_category.html:34
+msgid "New category"
+msgstr "Nuova categoria"
+
+#: templates/change_category.html:48 templates/move_to_other_location.html:48
+msgid "Move"
+msgstr "Sposta"
+
+#: templates/change_category.html:49 templates/create_shelves.html:51
+#: templates/move_to_other_location.html:49
+msgid "Cancel"
+msgstr "Annulla"
+
+#: templates/create_shelves.html:18
+msgid "Add shelves to {{ locator }}"
+msgstr "Aggiungi ripiani a {{ locator }}"
+
+#: templates/create_shelves.html:28
+msgid "Name prefix"
+msgstr "Prefisso nome"
+
+#: templates/create_shelves.html:29
+msgid "Shelf"
+msgstr "Ripiano"
+
+#: templates/create_shelves.html:32
+msgid "Locator prefix"
+msgstr "Prefisso localizzatore"
+
+#: templates/create_shelves.html:36
+msgid "Columns"
+msgstr "Colonne"
+
+#: templates/create_shelves.html:40
+msgid "Shelves / Rows"
+msgstr "Ripiani / Righe"
+
+#: templates/create_shelves.html:50
+msgid "Create"
+msgstr "Crea"
+
+#: templates/move_to_other_location.html:18
+msgid "Move {{ objects_name }} to other location"
+msgstr "Sposta {{ objects_name }} in un altro luogo"
+
+#: templates/move_to_other_location.html:24
+#, python-format
+msgid "Moving the following %(objects_name)s to a new location:"
+msgstr "Spostamento dei seguenti %(objects_name)s in un altro luogo:"
+
+#: templates/move_to_other_location.html:34
+msgid "New location"
+msgstr "Nuovo luogo"
+
+msgid "Parent"
+msgstr "Genitore"
+
+msgid "Log out"
+msgstr "Esci"

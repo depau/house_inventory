@@ -128,3 +128,6 @@ try:
         raise NameError
 except NameError:
     raise NameError("Please define SECRET_KEY in custom_settings.py")
+
+if not DEBUG and not ALLOWED_HOSTS:
+    print("Warning: ALLOWED_HOSTS is empty. It should contain a list of allowed domain names.")

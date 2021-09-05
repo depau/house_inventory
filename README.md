@@ -19,6 +19,22 @@ Here it is for your enjoyment.
 - Search
 - Item expiration (though no reminders)
 
+## Deploy with Docker
+
+- Use the `docker-compose.yml` file found in this repo, or use the image
+  `ghcr.io/depau/house_inventory:main `.
+- Edit `volumes` and map `/data` to a local directory for persistent data storage
+- Copy and edit `custom_settings.py.sample` to `custom_settings.py` into the data volume
+  - Review all settings, pay particular attention to `SECRET_KEY`, `ALLOWED_HOSTS` and the
+    entries related to Docker
+- Launch the container with `docker-compose up -d`
+- Create a super user account with `docker-compose exec app python manage.py createsuperuser`
+
+Optional:
+
+- Configure your reverse-proxy to serve static files directly from `VOL/static`. Be extra sure
+  that you're not also serving your config and the SQLite database ;)
+
 ## License
 
 GNU General Public License v3.0 or later.

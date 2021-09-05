@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-05 13:26+0200\n"
-"PO-Revision-Date: 2021-09-05 13:45+0200\n"
+"POT-Creation-Date: 2021-09-05 14:22+0200\n"
+"PO-Revision-Date: 2021-09-05 14:25+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it\n"
@@ -60,84 +60,84 @@ msgid "Changing %(name)s categories"
 msgstr "Cambiamento categorie di %(name)s"
 
 #: inventory/actions.py:105
-msgid "Create shelves"
-msgstr "Crea ripiani"
+msgid "Create sections"
+msgstr "Crea sezioni"
 
-#: inventory/actions.py:113
-msgid "Select exactly one location in order to add shelves to it"
-msgstr "Seleziona esattamente un luogo per aggiungervi i ripiani"
+#: inventory/actions.py:112
+msgid "Select exactly one location in order to add sections to it"
+msgstr "Seleziona esattamente un luogo per aggiungere delle sezioni"
 
 #: inventory/actions.py:126
 msgid "This is not Microsoft Excel, stop it."
 msgstr "Questo non è Microsoft Excel, smettila."
 
-#: inventory/actions.py:144
+#: inventory/actions.py:143
 #, python-format
 msgid "Successfully created %(count)d %(items)s."
 msgstr "Creati %(count)d %(items)s con successo."
 
-#: inventory/actions.py:151
+#: inventory/actions.py:150
 #, python-format
-msgid "Add shelves to %(name)s"
-msgstr "Aggiungi ripiani a %(name)s"
+msgid "Add sections to %(name)s"
+msgstr "Aggiungi sezioni a %(name)s"
 
-#: inventory/admin.py:26
+#: inventory/admin.py:28
 msgid "Inventory management"
 msgstr "Gestione inventario"
 
-#: inventory/admin.py:30 inventory/admin.py:31
+#: inventory/admin.py:32 inventory/admin.py:33
 msgid "House inventory"
 msgstr "Inventario casa"
 
-#: inventory/admin.py:48
+#: inventory/admin.py:62
 msgid "Edit"
 msgstr "Modifica"
 
-#: inventory/admin.py:68
+#: inventory/admin.py:82
 #, python-format
 msgid "Search all %(model_name)s named \"%(name)s\""
 msgstr "Cerca tutti gli %(model_name)s che si chiamano \"%(name)s\""
 
-#: inventory/admin.py:73 inventory/models.py:13 inventory/models.py:37
+#: inventory/admin.py:87 inventory/models.py:13 inventory/models.py:37
 #: inventory/models.py:67
 msgid "name"
 msgstr "nome"
 
-#: inventory/admin.py:79 inventory/admin.py:89
+#: inventory/admin.py:93 inventory/admin.py:103
 #, python-format
 msgid "Explore \"%(name)s\""
 msgstr "Esplora \"%(name)s\""
 
-#: inventory/admin.py:83 inventory/list_filters.py:16 inventory/models.py:30
+#: inventory/admin.py:97 inventory/list_filters.py:16 inventory/models.py:30
 #: inventory/models.py:71
 msgid "location"
 msgstr "luogo"
 
-#: inventory/admin.py:93
+#: inventory/admin.py:107
 msgid "cat."
 msgstr "cat."
 
-#: inventory/admin.py:98
+#: inventory/admin.py:112
 msgid "piece"
 msgid_plural "pieces"
 msgstr[0] "pezzo"
 msgstr[1] "pezzi"
 
-#: inventory/admin.py:101
+#: inventory/admin.py:115
 msgid "qty"
 msgstr "qtà"
 
-#: inventory/admin.py:137 inventory/admin.py:158
+#: inventory/admin.py:151 inventory/admin.py:172
 #, python-format
 msgid "See all items in \"%(name)s\""
 msgstr "Vedi tutti gli oggetti in \"%(name)s\""
 
-#: inventory/admin.py:139 inventory/admin.py:160
+#: inventory/admin.py:153 inventory/admin.py:174
 #, python-format
 msgid "Items in %(name)s"
 msgstr "Oggetti in %(name)s"
 
-#: inventory/admin.py:141 inventory/admin.py:162 inventory/models.py:87
+#: inventory/admin.py:155 inventory/admin.py:176 inventory/models.py:87
 msgid "items"
 msgstr "oggetti"
 
@@ -223,7 +223,7 @@ msgstr "unità"
 msgid "item"
 msgstr "oggetto"
 
-#: templates/change_category.html:15 templates/create_shelves.html:15
+#: templates/change_category.html:15 templates/create_sections.html:15
 #: templates/move_to_other_location.html:15
 msgid "Home"
 msgstr "Home"
@@ -245,36 +245,77 @@ msgstr "Nuova categoria"
 msgid "Move"
 msgstr "Sposta"
 
-#: templates/change_category.html:49 templates/create_shelves.html:51
+#: templates/change_category.html:49 templates/create_sections.html:84
 #: templates/move_to_other_location.html:49
 msgid "Cancel"
 msgstr "Annulla"
 
-#: templates/create_shelves.html:18
-msgid "Add shelves to {{ locator }}"
-msgstr "Aggiungi ripiani a {{ locator }}"
+#: templates/create_sections.html:18
+msgid "Add sections to {{ locator }}"
+msgstr "Aggiungi sezioni a {{ locator }}"
 
-#: templates/create_shelves.html:28
+#: templates/create_sections.html:24
+msgid ""
+"This functionality allows you to quickly subdivide a location into sections. "
+"This makes it easier to\n"
+"identify locations inside cabinets, bookshelves and racks by associating "
+"them to a coordinate-like locator code."
+msgstr ""
+"Questa funzione consente di dividere rapidamente un luogo in sezioni. Ciò "
+"rende semplice 'identificazione di luoghi\n"
+"dentro armadi, librerie e rack, associando a ogni suddivisione un codice di "
+"localizzazione simile a una coordinata."
+
+#: templates/create_sections.html:28
+msgid ""
+"The result will be a set of new location with a locator that looks like "
+"PrefixRowColumn, such as\n"
+"SH.3C if you use \"SH.\" as locator prefix. Or such as \"DR.2\" if you use "
+"\"DR.\" as locator prefix and only request one\n"
+"column."
+msgstr ""
+"Il risultato sarà un insieme di nuovi luoghi aventi un localizzatore nel "
+"seguente formato: PrefissoRigaColonna.\n"
+"Per esempio, R.3C se usi \"R.\" come prefisso localizzatore, oppure \"C.2\" "
+"se usi \"C.\" come prefisso e richiedi soltanto una colonna."
+
+#: templates/create_sections.html:34
+msgid "Tabular bookshelf / rack"
+msgstr "Libreria \"tabulare\" / rack"
+
+#: templates/create_sections.html:43
+msgid "Bookshelf / drawers"
+msgstr "Libreria / cassettiera"
+
+#: templates/create_sections.html:56
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: templates/create_sections.html:58
 msgid "Name prefix"
 msgstr "Prefisso nome"
 
-#: templates/create_shelves.html:29
+#: templates/create_sections.html:59
 msgid "Shelf"
 msgstr "Ripiano"
 
-#: templates/create_shelves.html:32
+#: templates/create_sections.html:62
 msgid "Locator prefix"
 msgstr "Prefisso localizzatore"
 
-#: templates/create_shelves.html:36
+#: templates/create_sections.html:66
 msgid "Columns"
 msgstr "Colonne"
 
-#: templates/create_shelves.html:40
-msgid "Shelves / Rows"
-msgstr "Ripiani / Righe"
+#: templates/create_sections.html:70
+msgid "Rows"
+msgstr "Righe"
 
-#: templates/create_shelves.html:50
+#: templates/create_sections.html:74
+msgid "Indices start from zero"
+msgstr "Inizia a contare da zero"
+
+#: templates/create_sections.html:83
 msgid "Create"
 msgstr "Crea"
 
@@ -290,3 +331,6 @@ msgstr "Spostamento dei seguenti %(objects_name)s in un altro luogo:"
 #: templates/move_to_other_location.html:34
 msgid "New location"
 msgstr "Nuovo luogo"
+
+#~ msgid "Shelves / Rows"
+#~ msgstr "Ripiani / Righe"

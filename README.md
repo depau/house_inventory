@@ -19,6 +19,15 @@ Here it is for your enjoyment.
 - Search
 - Item expiration (though no reminders)
 
+## Deployment notes
+
+The deployment threat model considers exclusively a local home LAN setup.
+
+Absolutely ZERO extra precautions have been taken to ensure it is okay to expose this to the Internet,
+and it is left as an exercise for the reader.
+
+It should be fine, though, I think. Contributions are welcome.
+
 ## Deploy with Docker
 
 - Use the `docker-compose.yml` file found in this repo, or use the image

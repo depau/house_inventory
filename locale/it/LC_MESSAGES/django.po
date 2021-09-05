@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-05 13:26+0200\n"
-"PO-Revision-Date: 2021-09-05 13:27+0200\n"
+"PO-Revision-Date: 2021-09-05 13:45+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it\n"
@@ -175,7 +175,7 @@ msgstr "Scade questo mese"
 
 #: inventory/list_filters.py:148
 msgid "Expires later"
-msgstr "Scade più avanti"
+msgstr "Scadrà più avanti"
 
 #: inventory/list_filters.py:154
 msgid "Does not expire"

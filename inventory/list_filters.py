@@ -71,7 +71,8 @@ class ItemsByCategory(admin.SimpleListFilter):
         category = Category.objects.get(pk=self.value())
         result = queryset.filter(category=category)
         for i in category.descendants:
-            result |= queryset.filter(category=i)
+            if i:
+                result |= queryset.filter(category=i)
         return result
 
 
@@ -89,9 +90,10 @@ class LocationsByLocation(admin.SimpleListFilter):
         if not self.value():
             return queryset
         location = Location.objects.get(pk=self.value())
-        result = queryset.filter(pk=location.id)
+        result = queryset.filter(pk=location.pk)
         for i in location.descendants:
-            result |= queryset.filter(pk=i.id)
+            if i:
+                result |= queryset.filter(pk=i.pk)
         return result
 
 

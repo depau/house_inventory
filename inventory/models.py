@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Location(treenode.models.TreeNodeModel):
-    treenode_display_field = 'name'
+    treenode_display_field = 'locator'
 
     name = models.CharField(_("name"), max_length=200)
     locator = models.CharField(_("locator"), max_length=50)
@@ -12,7 +12,7 @@ class Location(treenode.models.TreeNodeModel):
 
     def __str__(self):
         if self.parent is not None:
-            return f"{str(self.parent)}.{self.locator}"
+            return f"{str(self.parent)}/{self.locator}"
         return self.locator
 
     class Meta:

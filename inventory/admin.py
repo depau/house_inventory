@@ -33,9 +33,6 @@ class InventoryAdminSite(admin.AdminSite):
 
 
 admin_site = InventoryAdminSite(name='admin')
-# admin_site.add_action(change_category)
-# admin_site.add_action(create_shelves)
-# admin_site.add_action(move_to_other_location)
 
 # Stock Django auth models
 

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-05 13:06+0200\n"
-"PO-Revision-Date: 2021-09-05 01:16+0200\n"
+"PO-Revision-Date: 2021-09-05 13:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it\n"
@@ -91,12 +91,12 @@ msgstr "Inventario casa"
 
 #: inventory/admin.py:48
 msgid "Edit"
-msgstr ""
+msgstr "Modifica"
 
 #: inventory/admin.py:68
 #, python-format
 msgid "Search all %(model_name)s named \"%(name)s\""
-msgstr ""
+msgstr "Cerca tutti gli %(model_name)s che si chiamano \"%(name)s\""
 
 #: inventory/admin.py:73 inventory/models.py:9 inventory/models.py:26
 #: inventory/models.py:45
@@ -106,7 +106,7 @@ msgstr "nome"
 #: inventory/admin.py:79 inventory/admin.py:90
 #, python-format
 msgid "Explore \"%(name)s\""
-msgstr ""
+msgstr "Esplora \"%(name)s\""
 
 #: inventory/admin.py:83 inventory/list_filters.py:16 inventory/models.py:19
 #: inventory/models.py:49
@@ -115,7 +115,7 @@ msgstr "luogo"
 
 #: inventory/admin.py:94
 msgid "cat."
-msgstr ""
+msgstr "cat."
 
 #: inventory/admin.py:99
 msgid "piece"
@@ -125,18 +125,17 @@ msgstr[1] "pezzi"
 
 #: inventory/admin.py:102
 msgid "qty"
-msgstr ""
+msgstr "qtà"
 
 #: inventory/admin.py:137 inventory/admin.py:156
 #, python-format
 msgid "See all items in \"%(name)s\""
-msgstr ""
+msgstr "Vedi tutti gli oggetti in \"%(name)s\""
 
 #: inventory/admin.py:139 inventory/admin.py:158
-#, fuzzy, python-format
-#| msgid "Add shelves to %(name)s"
+#, python-format
 msgid "Items in %(name)s"
-msgstr "Aggiungi ripiani a %(name)s"
+msgstr "Oggetti in %(name)s"
 
 #: inventory/admin.py:141 inventory/admin.py:160 inventory/models.py:65
 msgid "items"

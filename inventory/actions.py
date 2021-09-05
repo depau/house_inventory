@@ -102,15 +102,15 @@ def change_category(modeladmin: ModelAdmin, request: HttpRequest, queryset: Quer
     return TemplateResponse(request, ["change_category.html"], context)
 
 
-@admin.action(description=_("Create shelves"), permissions=['add'])
-def create_shelves(modeladmin: ModelAdmin, request: HttpRequest, queryset: QuerySet):
+@admin.action(description=_("Create sections"), permissions=['add'])
+def create_sections(modeladmin: ModelAdmin, request: HttpRequest, queryset: QuerySet):
     # noinspection PyProtectedMember
     opts = modeladmin.model._meta
     app_label = opts.app_label
 
     n = queryset.count()
     if n != 1:
-        modeladmin.message_user(request, _("Select exactly one location in order to add shelves to it"), messages.ERROR)
+        modeladmin.message_user(request, _("Select exactly one location in order to add sections to it"), messages.ERROR)
         return None
 
     location = queryset.first()
@@ -148,7 +148,7 @@ def create_shelves(modeladmin: ModelAdmin, request: HttpRequest, queryset: Query
 
     objects_name = model_ngettext(queryset)
 
-    title = _("Add shelves to %(name)s") % {"name": str(location)}
+    title = _("Add sections to %(name)s") % {"name": str(location)}
 
     context = {
         **modeladmin.admin_site.each_context(request),
@@ -163,4 +163,4 @@ def create_shelves(modeladmin: ModelAdmin, request: HttpRequest, queryset: Query
 
     request.current_app = modeladmin.admin_site.name
 
-    return TemplateResponse(request, ["create_shelves.html"], context)
+    return TemplateResponse(request, ["create_sections.html"], context)

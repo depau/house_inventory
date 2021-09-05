@@ -12,7 +12,7 @@ from django.utils.translation import gettext_lazy as _, ngettext
 from treenode.admin import TreeNodeModelAdmin
 from treenode.forms import TreeNodeForm
 
-from .actions import move_to_other_location, change_category, create_shelves
+from .actions import move_to_other_location, change_category, create_sections
 from .list_filters import ItemsByLocation, LocationsByLocation, ExpirationFieldListFilter, ItemsByCategory, \
     CategoriesByCategory
 from .models import Location, Item, Category
@@ -141,7 +141,7 @@ class LocationAdmin(CustomChangeListModelAdmin, TreeNodeModelAdmin):
     list_filter = (LocationsByLocation,)
     inlines = [LocationInline, ItemInlineForLocation]
     fields = ('name', 'locator', 'tn_parent', 'description')
-    actions = (create_shelves,)
+    actions = (create_sections,)
     list_display_links = ('edit_icon',)
     search_fields = ('name', 'locator')
     edit_icon = edit_icon

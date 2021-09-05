@@ -15,7 +15,7 @@
         <a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
         &rsaquo; <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
         &rsaquo; <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
-        &rsaquo; {% translate 'Add shelves to {{ locator }}' %}
+        &rsaquo; {% translate 'Add sections to {{ locator }}' %}
     </div>
 {% endblock %}
 
@@ -37,7 +37,7 @@
                 <p><input type="number" id="columns" name="columns" min="0" value="1"></p>
             </div>
             <div>
-                <p><label for="rows">{% translate "Shelves / Rows" %}:</label></p>
+                <p><label for="rows">{% translate "Rows" %}:</label></p>
                 <p><input type="number" id="rows" name="rows" min="0" value="1"></p>
             </div>
         </div>
@@ -45,7 +45,7 @@
             {% for obj in queryset %}
                 <input type="hidden" name="{{ action_checkbox_name }}" value="{{ obj.pk|unlocalize }}">
             {% endfor %}
-            <input type="hidden" name="action" value="create_shelves">
+            <input type="hidden" name="action" value="create_sections">
             <input type="hidden" name="post" value="yes">
             <input type="submit" value="{% translate 'Create' %}">
             <a href="#" class="button cancel-link">{% translate "Cancel" %}</a>

@@ -2,9 +2,10 @@ import datetime
 
 from django.contrib import admin
 from django.contrib.admin import ListFilter
-from django.contrib.admin.options import IncorrectLookupParameters
+from django.contrib.admin.options import IncorrectLookupParameters, ModelAdmin
 from django.contrib.admin.utils import prepare_lookup_value
 from django.core.exceptions import ValidationError
+from django.http import HttpRequest
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
@@ -15,11 +16,18 @@ class ItemsByLocation(admin.SimpleListFilter):
     title = _("location")
     parameter_name = "location"
 
-    def lookups(self, request, model_admin):
-        return sorted(
-            ((i.location.id, str(i.location)) for i in model_admin.model.objects.all() if i.location),
-            key=lambda i: i[1]
-        )
+    def lookups(self, request: HttpRequest, model_admin: ModelAdmin):
+        # noinspection PyTypeChecker
+        maybe_id = request.GET.get(self.parameter_name, None)
+        if maybe_id:
+            maybe_id = int(maybe_id)
+            loc = Location.objects.get(pk=maybe_id)
+            yield loc.id, str(loc)
+
+        for i in sorted(((i.location.id, str(i.location)) for i in model_admin.model.objects.all() if
+                         i.location and i.location.pk != maybe_id),
+                        key=lambda l: l[1]):
+            yield i
 
     def queryset(self, request, queryset):
         if not self.value():
@@ -37,9 +45,11 @@ class ItemsByCategory(admin.SimpleListFilter):
 
     def lookups(self, request, model_admin):
         result = set()
+        returned_ids = set()
 
-        def add_item(cat: Category):
-            result.add((cat.id, "/".join(map(lambda c: c.name, cat.breadcrumbs))))
+        def add_item(categ: Category):
+            result.add((categ.pk, "/".join(map(lambda c: c.name, categ.breadcrumbs))))
+            returned_ids.add(categ.pk)
 
         for i in model_admin.model.objects.all():
             if not i.category:
@@ -47,7 +57,13 @@ class ItemsByCategory(admin.SimpleListFilter):
             add_item(i.category)
             list(map(add_item, i.category.ancestors))
 
-        return sorted(result, key=lambda c: c[1])
+        maybe_id = request.GET.get(self.parameter_name, None)
+        if maybe_id and int(maybe_id) not in returned_ids:
+            cat = Category.objects.get(pk=int(maybe_id))
+            yield cat.id, "/".join(map(lambda c: c.name, cat.breadcrumbs))
+
+        for i in sorted(result, key=lambda c: c[1]):
+            yield i
 
     def queryset(self, request, queryset):
         if not self.value():

@@ -48,7 +48,7 @@ class ItemsByCategory(admin.SimpleListFilter):
         returned_ids = set()
 
         def add_item(categ: Category):
-            result.add((categ.pk, "/".join(map(lambda c: c.name, categ.breadcrumbs))))
+            result.add((categ.pk, categ.bcrumb_name))
             returned_ids.add(categ.pk)
 
         for i in model_admin.model.objects.all():
@@ -60,7 +60,7 @@ class ItemsByCategory(admin.SimpleListFilter):
         maybe_id = request.GET.get(self.parameter_name, None)
         if maybe_id and int(maybe_id) not in returned_ids:
             cat = Category.objects.get(pk=int(maybe_id))
-            yield cat.id, "/".join(map(lambda c: c.name, cat.breadcrumbs))
+            yield cat.id, cat.bcrumb_name
 
         for i in sorted(result, key=lambda c: c[1]):
             yield i
@@ -92,6 +92,26 @@ class LocationsByLocation(admin.SimpleListFilter):
         result = queryset.filter(pk=location.id)
         for i in location.descendants:
             result |= queryset.filter(pk=i.id)
+        return result
+
+
+class CategoriesByCategory(admin.SimpleListFilter):
+    title = _("parent")
+    parameter_name = "descendants"
+
+    def lookups(self, request, model_admin):
+        return sorted(
+            ((i.id, i.bcrumb_name) for i in model_admin.model.objects.all()),
+            key=lambda i: i[1]
+        )
+
+    def queryset(self, request, queryset):
+        if not self.value():
+            return queryset
+        category = Category.objects.get(pk=self.value())
+        result = queryset.filter(pk=category.pk)
+        for i in category.descendants:
+            result |= queryset.filter(pk=i.pk)
         return result
 
 

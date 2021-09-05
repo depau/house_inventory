@@ -12,7 +12,7 @@ from treenode.admin import TreeNodeModelAdmin
 from treenode.forms import TreeNodeForm
 
 from .actions import move_to_other_location, change_category, create_shelves
-from .list_filters import ItemsByLocation, LocationsByLocation, ExpirationFieldListFilter, ItemsByCategory
+from .list_filters import ItemsByLocation, LocationsByLocation, ExpirationFieldListFilter, ItemsByCategory, CategoriesByCategory
 from .models import Location, Item, Category
 
 
@@ -85,11 +85,10 @@ class ItemAdmin(admin.ModelAdmin):
     def link_to_category(self, obj: Item):
         if obj.category is None:
             return self.get_empty_value_display()
-        cat_bcrumbs = "/".join(map(lambda c: c.name, obj.category.breadcrumbs))
         link = urls.reverse("admin:inventory_category_changelist") + f"?descendants={obj.category.id}"
         return format_html('<a href="{}" title="{}">{}</a>', link, _("Explore \"%(name)s\"") % {
-            "name": cat_bcrumbs
-        }, cat_bcrumbs)
+            "name": obj.category.bcrumb_name
+        }, obj.category.bcrumb_name)
 
     link_to_category.short_description = _("cat.")
 
@@ -130,6 +129,7 @@ class LocationAdmin(TreeNodeModelAdmin):
     fields = ('name', 'locator', 'tn_parent', 'description')
     actions = (create_shelves,)
     list_display_links = ('edit_icon',)
+    search_fields = ('name', 'locator')
     edit_icon = edit_icon
 
     def name_link_to_items(self, obj: Location):
@@ -149,6 +149,8 @@ class CategoryAdmin(TreeNodeModelAdmin):
     fields = ('name', 'tn_parent')
     list_display = ('name_link_to_items', 'edit_icon')
     list_display_links = ('edit_icon',)
+    list_filter = (CategoriesByCategory,)
+    search_fields = ('name',)
     edit_icon = edit_icon
 
     def name_link_to_items(self, obj: Category):

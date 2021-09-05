@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-05 13:06+0200\n"
-"PO-Revision-Date: 2021-09-05 13:09+0200\n"
+"POT-Creation-Date: 2021-09-05 13:26+0200\n"
+"PO-Revision-Date: 2021-09-05 13:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0\n"
 
-#: inventory/__init__.py:3
+#: inventory/__init__.py:5
 msgid "Log out"
 msgstr "Esci"
 
-#: inventory/__init__.py:4
+#: inventory/__init__.py:6
 msgid "Parent"
 msgstr "Genitore"
 
@@ -98,46 +98,46 @@ msgstr "Modifica"
 msgid "Search all %(model_name)s named \"%(name)s\""
 msgstr "Cerca tutti gli %(model_name)s che si chiamano \"%(name)s\""
 
-#: inventory/admin.py:73 inventory/models.py:9 inventory/models.py:26
-#: inventory/models.py:45
+#: inventory/admin.py:73 inventory/models.py:13 inventory/models.py:37
+#: inventory/models.py:67
 msgid "name"
 msgstr "nome"
 
-#: inventory/admin.py:79 inventory/admin.py:90
+#: inventory/admin.py:79 inventory/admin.py:89
 #, python-format
 msgid "Explore \"%(name)s\""
 msgstr "Esplora \"%(name)s\""
 
-#: inventory/admin.py:83 inventory/list_filters.py:16 inventory/models.py:19
-#: inventory/models.py:49
+#: inventory/admin.py:83 inventory/list_filters.py:16 inventory/models.py:30
+#: inventory/models.py:71
 msgid "location"
 msgstr "luogo"
 
-#: inventory/admin.py:94
+#: inventory/admin.py:93
 msgid "cat."
 msgstr "cat."
 
-#: inventory/admin.py:99
+#: inventory/admin.py:98
 msgid "piece"
 msgid_plural "pieces"
 msgstr[0] "pezzo"
 msgstr[1] "pezzi"
 
-#: inventory/admin.py:102
+#: inventory/admin.py:101
 msgid "qty"
 msgstr "qtà"
 
-#: inventory/admin.py:137 inventory/admin.py:156
+#: inventory/admin.py:137 inventory/admin.py:158
 #, python-format
 msgid "See all items in \"%(name)s\""
 msgstr "Vedi tutti gli oggetti in \"%(name)s\""
 
-#: inventory/admin.py:139 inventory/admin.py:158
+#: inventory/admin.py:139 inventory/admin.py:160
 #, python-format
 msgid "Items in %(name)s"
 msgstr "Oggetti in %(name)s"
 
-#: inventory/admin.py:141 inventory/admin.py:160 inventory/models.py:65
+#: inventory/admin.py:141 inventory/admin.py:162 inventory/models.py:87
 msgid "items"
 msgstr "oggetti"
 
@@ -145,7 +145,7 @@ msgstr "oggetti"
 msgid "inventory"
 msgstr "inventario"
 
-#: inventory/list_filters.py:43 inventory/models.py:32 inventory/models.py:50
+#: inventory/list_filters.py:43 inventory/models.py:54 inventory/models.py:72
 msgid "category"
 msgstr "categoria"
 
@@ -153,59 +153,73 @@ msgstr "categoria"
 msgid "container"
 msgstr "contenitore"
 
-#: inventory/list_filters.py:99 inventory/models.py:51
+#: inventory/list_filters.py:99
+msgid "parent"
+msgstr "genitore"
+
+#: inventory/list_filters.py:119 inventory/models.py:73
 msgid "expiration"
 msgstr "scadenza"
 
-#: inventory/list_filters.py:120
+#: inventory/list_filters.py:140
 msgid "Any"
 msgstr "Qualsiasi"
 
-#: inventory/list_filters.py:121
+#: inventory/list_filters.py:141
 msgid "Expired"
 msgstr "Scaduto"
 
-#: inventory/list_filters.py:124
+#: inventory/list_filters.py:144
 msgid "Expires this month"
 msgstr "Scade questo mese"
 
-#: inventory/list_filters.py:128
+#: inventory/list_filters.py:148
 msgid "Expires later"
 msgstr "Scade più avanti"
 
-#: inventory/list_filters.py:134
+#: inventory/list_filters.py:154
 msgid "Does not expire"
 msgstr "Non scade"
 
-#: inventory/list_filters.py:135
+#: inventory/list_filters.py:155
 msgid "Expires"
 msgstr "Scade"
 
-#: inventory/models.py:10
+#: inventory/models.py:14
 msgid "locator"
 msgstr "localizzatore"
 
-#: inventory/models.py:11 inventory/models.py:46
+#: inventory/models.py:15 inventory/models.py:68
 msgid "description"
 msgstr "descrizione"
 
 #: inventory/models.py:20
+#, python-format
+msgid "View only locations under \"%(name)s\""
+msgstr "Vedi tutti i luoghi sotto \"%(name)s\""
+
+#: inventory/models.py:31
 msgid "locations"
 msgstr "luoghi"
 
-#: inventory/models.py:33
+#: inventory/models.py:42
+#, python-format
+msgid "View only categories under \"%(name)s\""
+msgstr "Vedi tutte le categorie sotto \"%(name)s\""
+
+#: inventory/models.py:55
 msgid "categories"
 msgstr "categorie"
 
-#: inventory/models.py:47
+#: inventory/models.py:69
 msgid "amount"
 msgstr "quantità"
 
-#: inventory/models.py:48
+#: inventory/models.py:70
 msgid "unit"
 msgstr "unità"
 
-#: inventory/models.py:64
+#: inventory/models.py:86
 msgid "item"
 msgstr "oggetto"
 

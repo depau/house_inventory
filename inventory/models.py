@@ -1,14 +1,25 @@
+from functools import cached_property
+
 import treenode.models
+from django import urls
 from django.db import models
+from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
 
 class Location(treenode.models.TreeNodeModel):
-    treenode_display_field = 'locator'
+    treenode_display_field = 'locator_link_filter'
 
     name = models.CharField(_("name"), max_length=200)
     locator = models.CharField(_("locator"), max_length=50)
     description = models.TextField(_("description"), blank=True)
+
+    @cached_property
+    def locator_link_filter(self):
+        link = urls.reverse("admin:inventory_location_changelist") + f"?descendants={self.pk}"
+        return format_html('<a href="{}" title="{}">{}</a>', link, _("View only locations under \"%(name)s\"") % {
+            "name": self.name
+        }, self.locator)
 
     def __str__(self):
         if self.parent is not None:
@@ -21,9 +32,20 @@ class Location(treenode.models.TreeNodeModel):
 
 
 class Category(treenode.models.TreeNodeModel):
-    treenode_display_field = 'name'
+    treenode_display_field = 'name_link_filter'
 
     name = models.CharField(_("name"), max_length=200)
+
+    @cached_property
+    def name_link_filter(self):
+        link = urls.reverse("admin:inventory_category_changelist") + f"?descendants={self.pk}"
+        return format_html('<a href="{}" title="{}">{}</a>', link, _("View only categories under \"%(name)s\"") % {
+            "name": self.name
+        }, self.name)
+
+    @cached_property
+    def bcrumb_name(self):
+        return "/".join(map(lambda c: c.name, self.breadcrumbs))
 
     def __str__(self):
         return self.name

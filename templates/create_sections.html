@@ -67,11 +67,14 @@
             </div>
             <div>
                 <p><label for="columns">{% translate "Columns" %}:</label></p>
-                <p><input type="number" id="columns" name="columns" min="0" value="1"></p>
+                <p><input type="number" id="columns" name="columns" min="1" value="1"></p>
             </div>
             <div>
                 <p><label for="rows">{% translate "Rows" %}:</label></p>
-                <p><input type="number" id="rows" name="rows" min="0" value="1"></p>
+                <p><input type="number" id="rows" name="rows" min="1" value="1"></p>
+            </div>
+            <div>
+                <p><input type="checkbox" id="zero_based" name="zero_based"> <label for="zero_based">{% translate "Indices start from zero" %}</label></p>
             </div>
         </div>
         <div>

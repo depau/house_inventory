@@ -106,7 +106,6 @@ def change_category(modeladmin: ModelAdmin, request: HttpRequest, queryset: Quer
 def create_sections(modeladmin: ModelAdmin, request: HttpRequest, queryset: QuerySet):
     # noinspection PyProtectedMember
     opts = modeladmin.model._meta
-    app_label = opts.app_label
 
     n = queryset.count()
     if n != 1:
@@ -121,6 +120,7 @@ def create_sections(modeladmin: ModelAdmin, request: HttpRequest, queryset: Quer
         cols = int(request.POST.get("columns"))
         prefix = request.POST.get("locator_prefix")
         name_prefix = request.POST.get("name_prefix")
+        zero_based = request.POST.get("zero_based", "off") == "on"
 
         if cols > ord('Z'):
             modeladmin.message_user(request, _("This is not Microsoft Excel, stop it."), messages.ERROR)
@@ -131,9 +131,8 @@ def create_sections(modeladmin: ModelAdmin, request: HttpRequest, queryset: Quer
             col = chr(ord('A') + col_num) if cols > 1 else ""
 
             for row_num in range(rows):
-                row = str(row_num) if rows > 1 else ""
-                if rows == cols == 1:
-                    row = "1"
+                row_num += 0 if zero_based else 1
+                row = str(row_num) if rows > 1 or rows == cols == 1 else ""
 
                 newloc = f"{prefix}{row}{col}"
                 newname = f"{name_prefix} {newloc}"

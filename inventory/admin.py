@@ -2,6 +2,7 @@ from django import urls
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.admin.utils import model_ngettext
+from django.contrib.admin.views.main import ChangeList
 from django.contrib.auth.models import User, Group
 from django.templatetags.static import static
 from django.utils.html import format_html
@@ -12,7 +13,8 @@ from treenode.admin import TreeNodeModelAdmin
 from treenode.forms import TreeNodeForm
 
 from .actions import move_to_other_location, change_category, create_shelves
-from .list_filters import ItemsByLocation, LocationsByLocation, ExpirationFieldListFilter, ItemsByCategory, CategoriesByCategory
+from .list_filters import ItemsByLocation, LocationsByLocation, ExpirationFieldListFilter, ItemsByCategory, \
+    CategoriesByCategory
 from .models import Location, Item, Category
 
 
@@ -40,6 +42,18 @@ admin_site.register(User)
 admin_site.register(Group)
 
 
+class ShortTitleChangeList(ChangeList):
+    def __init__(self, *a, **kw):
+        super().__init__(*a, **kw)
+        self.title = self.opts.verbose_name_plural.capitalize()
+
+
+class CustomChangeListModelAdmin(admin.ModelAdmin):
+    # noinspection PyMethodMayBeStatic
+    def get_changelist(self, request, **kwargs):
+        return ShortTitleChangeList
+
+
 # App models
 
 def edit_icon(*a, **kw):
@@ -52,7 +66,7 @@ edit_icon.short_description = ""
 
 
 @admin.register(Item, site=admin_site)
-class ItemAdmin(admin.ModelAdmin):
+class ItemAdmin(CustomChangeListModelAdmin):
     ordering = ('location', 'name')
     fields = (('name', 'location'), ('amount', 'unit'), 'expiration', 'description')
     search_fields = ('name',)
@@ -120,7 +134,7 @@ class LocationInline(admin.TabularInline):
 
 
 @admin.register(Location, site=admin_site)
-class LocationAdmin(TreeNodeModelAdmin):
+class LocationAdmin(CustomChangeListModelAdmin, TreeNodeModelAdmin):
     treenode_display_mode = settings.LOCATIONS_DISPLAY_MODE
     form = TreeNodeForm
     list_display = ('name_link_to_items', 'edit_icon')
@@ -142,7 +156,7 @@ class LocationAdmin(TreeNodeModelAdmin):
 
 
 @admin.register(Category, site=admin_site)
-class CategoryAdmin(TreeNodeModelAdmin):
+class CategoryAdmin(CustomChangeListModelAdmin, TreeNodeModelAdmin):
     treenode_display_mode = settings.CATEGORIES_DISPLAY_MODE
     form = TreeNodeForm
     inlines = [ItemInlineForCategory]

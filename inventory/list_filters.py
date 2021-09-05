@@ -8,10 +8,10 @@ from django.core.exceptions import ValidationError
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
-from inventory.models import Location
+from inventory.models import Location, Category
 
 
-class ItemsByContainer(admin.SimpleListFilter):
+class ItemsByLocation(admin.SimpleListFilter):
     title = _("location")
     parameter_name = "location"
 
@@ -31,7 +31,35 @@ class ItemsByContainer(admin.SimpleListFilter):
         return result
 
 
-class LocationsByContainer(admin.SimpleListFilter):
+class ItemsByCategory(admin.SimpleListFilter):
+    title = _("category")
+    parameter_name = "category"
+
+    def lookups(self, request, model_admin):
+        result = set()
+
+        def add_item(cat: Category):
+            result.add((cat.id, "/".join(map(lambda c: c.name, cat.breadcrumbs))))
+
+        for i in model_admin.model.objects.all():
+            if not i.category:
+                continue
+            add_item(i.category)
+            list(map(add_item, i.category.ancestors))
+
+        return sorted(result, key=lambda c: c[1])
+
+    def queryset(self, request, queryset):
+        if not self.value():
+            return queryset
+        category = Category.objects.get(pk=self.value())
+        result = queryset.filter(category=category)
+        for i in category.descendants:
+            result |= queryset.filter(category=i)
+        return result
+
+
+class LocationsByLocation(admin.SimpleListFilter):
     title = _("container")
     parameter_name = "descendants"
 

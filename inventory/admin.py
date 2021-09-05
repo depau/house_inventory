@@ -12,7 +12,7 @@ from treenode.admin import TreeNodeModelAdmin
 from treenode.forms import TreeNodeForm
 
 from .actions import move_to_other_location, change_category, create_shelves
-from .list_filters import ItemsByContainer, LocationsByContainer, ExpirationFieldListFilter
+from .list_filters import ItemsByLocation, LocationsByLocation, ExpirationFieldListFilter, ItemsByCategory
 from .models import Location, Item, Category
 
 
@@ -62,7 +62,7 @@ class ItemAdmin(admin.ModelAdmin):
     list_display = (
         'link_to_category', 'link_to_name_search', 'link_to_location', 'short_amount', 'expiration', 'edit_icon')
     list_display_links = ('edit_icon',)
-    list_filter = (ItemsByContainer, 'category', 'amount', ExpirationFieldListFilter)
+    list_filter = (ItemsByLocation, ItemsByCategory, 'amount', ExpirationFieldListFilter)
     actions = (move_to_other_location, change_category)
     edit_icon = edit_icon
 
@@ -88,10 +88,11 @@ class ItemAdmin(admin.ModelAdmin):
     def link_to_category(self, obj: Item):
         if obj.category is None:
             return self.get_empty_value_display()
+        cat_bcrumbs = "/".join(map(lambda c: c.name, obj.category.breadcrumbs))
         link = urls.reverse("admin:inventory_category_changelist") + f"?descendants={obj.category.id}"
         return format_html('<a href="{}" title="{}">{}</a>', link, _("Explore \"%(name)s\"") % {
-            "name": obj.category.name
-        }, str(obj.category))
+            "name": cat_bcrumbs
+        }, cat_bcrumbs)
 
     link_to_category.short_description = _("cat.")
 
@@ -127,7 +128,7 @@ class LocationAdmin(TreeNodeModelAdmin):
     treenode_display_mode = settings.LOCATIONS_DISPLAY_MODE
     form = TreeNodeForm
     list_display = ('name_link_to_items', 'edit_icon')
-    list_filter = (LocationsByContainer,)
+    list_filter = (LocationsByLocation,)
     inlines = [LocationInline, ItemInlineForLocation]
     fields = ('name', 'locator', 'tn_parent', 'description')
     actions = (create_shelves,)

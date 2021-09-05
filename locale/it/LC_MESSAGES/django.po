@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-05 01:14+0200\n"
+"POT-Creation-Date: 2021-09-05 13:06+0200\n"
 "PO-Revision-Date: 2021-09-05 01:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,6 +17,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0\n"
+
+#: inventory/__init__.py:3
+msgid "Log out"
+msgstr "Esci"
+
+#: inventory/__init__.py:4
+msgid "Parent"
+msgstr "Genitore"
 
 #: inventory/actions.py:12
 msgid "Move items to another location"
@@ -73,72 +81,106 @@ msgstr "Creati %(count)d %(items)s con successo."
 msgid "Add shelves to %(name)s"
 msgstr "Aggiungi ripiani a %(name)s"
 
-#: inventory/admin.py:22
+#: inventory/admin.py:26
 msgid "Inventory management"
 msgstr "Gestione inventario"
 
-#: inventory/admin.py:26 inventory/admin.py:27
+#: inventory/admin.py:30 inventory/admin.py:31
 msgid "House inventory"
 msgstr "Inventario casa"
 
-#: inventory/admin.py:60 inventory/list_filters.py:15 inventory/models.py:19
+#: inventory/admin.py:48
+msgid "Edit"
+msgstr ""
+
+#: inventory/admin.py:68
+#, python-format
+msgid "Search all %(model_name)s named \"%(name)s\""
+msgstr ""
+
+#: inventory/admin.py:73 inventory/models.py:9 inventory/models.py:26
+#: inventory/models.py:45
+msgid "name"
+msgstr "nome"
+
+#: inventory/admin.py:79 inventory/admin.py:90
+#, python-format
+msgid "Explore \"%(name)s\""
+msgstr ""
+
+#: inventory/admin.py:83 inventory/list_filters.py:16 inventory/models.py:19
 #: inventory/models.py:49
 msgid "location"
 msgstr "luogo"
 
-#: inventory/admin.py:68 inventory/models.py:32 inventory/models.py:50
-msgid "category"
-msgstr "categoria"
+#: inventory/admin.py:94
+msgid "cat."
+msgstr ""
 
-#: inventory/admin.py:73
+#: inventory/admin.py:99
 msgid "piece"
 msgid_plural "pieces"
 msgstr[0] "pezzo"
 msgstr[1] "pezzi"
 
-#: inventory/admin.py:76
-msgid "Amount"
-msgstr "Quantità"
+#: inventory/admin.py:102
+msgid "qty"
+msgstr ""
 
-#: inventory/admin.py:110
-msgid "Locator"
-msgstr "Localizzatore"
+#: inventory/admin.py:137 inventory/admin.py:156
+#, python-format
+msgid "See all items in \"%(name)s\""
+msgstr ""
+
+#: inventory/admin.py:139 inventory/admin.py:158
+#, fuzzy, python-format
+#| msgid "Add shelves to %(name)s"
+msgid "Items in %(name)s"
+msgstr "Aggiungi ripiani a %(name)s"
+
+#: inventory/admin.py:141 inventory/admin.py:160 inventory/models.py:65
+msgid "items"
+msgstr "oggetti"
 
 #: inventory/apps.py:9
 msgid "inventory"
 msgstr "inventario"
 
-#: inventory/list_filters.py:35
+#: inventory/list_filters.py:43 inventory/models.py:32 inventory/models.py:50
+msgid "category"
+msgstr "categoria"
+
+#: inventory/list_filters.py:79
 msgid "container"
 msgstr "contenitore"
 
-#: inventory/list_filters.py:76
+#: inventory/list_filters.py:99 inventory/models.py:51
+msgid "expiration"
+msgstr "scadenza"
+
+#: inventory/list_filters.py:120
 msgid "Any"
 msgstr "Qualsiasi"
 
-#: inventory/list_filters.py:77
+#: inventory/list_filters.py:121
 msgid "Expired"
 msgstr "Scaduto"
 
-#: inventory/list_filters.py:80
+#: inventory/list_filters.py:124
 msgid "Expires this month"
 msgstr "Scade questo mese"
 
-#: inventory/list_filters.py:84
+#: inventory/list_filters.py:128
 msgid "Expires later"
 msgstr "Scade più avanti"
 
-#: inventory/list_filters.py:90
+#: inventory/list_filters.py:134
 msgid "Does not expire"
 msgstr "Non scade"
 
-#: inventory/list_filters.py:91
+#: inventory/list_filters.py:135
 msgid "Expires"
 msgstr "Scade"
-
-#: inventory/models.py:9 inventory/models.py:26 inventory/models.py:45
-msgid "name"
-msgstr "nome"
 
 #: inventory/models.py:10
 msgid "locator"
@@ -164,17 +206,9 @@ msgstr "quantità"
 msgid "unit"
 msgstr "unità"
 
-#: inventory/models.py:51
-msgid "expiration"
-msgstr "scadenza"
-
 #: inventory/models.py:64
 msgid "item"
 msgstr "oggetto"
-
-#: inventory/models.py:65
-msgid "items"
-msgstr "oggetti"
 
 #: templates/change_category.html:15 templates/create_shelves.html:15
 #: templates/move_to_other_location.html:15
@@ -243,9 +277,3 @@ msgstr "Spostamento dei seguenti %(objects_name)s in un altro luogo:"
 #: templates/move_to_other_location.html:34
 msgid "New location"
 msgstr "Nuovo luogo"
-
-msgid "Parent"
-msgstr "Genitore"
-
-msgid "Log out"
-msgstr "Esci"

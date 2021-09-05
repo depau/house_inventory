@@ -5,7 +5,7 @@ set -o pipefail
 set -o nounset
 
 echo "Collecting static files"
-python manage.py collectstatic
+python manage.py collectstatic -c
 
 echo "Performing migrations"
 python manage.py migrate

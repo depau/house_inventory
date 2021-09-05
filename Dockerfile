@@ -15,5 +15,5 @@ VOLUME /data/
 # This may have security implications that are, however, outside of my threat model
 ENV PYTHONPATH="/data"
 
-ENTRYPOINT ["gunicorn", "house_inventory.wsgi:application"]
+ENTRYPOINT ["/app/docker_entrypoint.sh", "house_inventory.wsgi:application"]
 CMD ["-w", "4", "-b", "0.0.0.0:8080"]

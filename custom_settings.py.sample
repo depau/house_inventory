@@ -29,6 +29,9 @@ TIME_ZONE = 'Europe/Rome'
 
 STATIC_URL = '/static/'
 
+# Uncomment for Docker
+# STATIC_ROOT = "/data/static"
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

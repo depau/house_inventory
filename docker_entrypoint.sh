@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+echo "Collecting static files"
+python manage.py collectstatic
+
+echo "Performing migrations"
+python manage.py migrate
+
+echo "Starting gunicorn"
+exec gunicorn "${@}"

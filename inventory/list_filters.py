@@ -96,7 +96,7 @@ class LocationsByLocation(admin.SimpleListFilter):
 
 
 class ExpirationFieldListFilter(ListFilter):
-    title = "expiration"
+    title = _("expiration")
 
     def __init__(self, request, params, model, model_admin):
         field = "expiration"

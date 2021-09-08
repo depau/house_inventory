@@ -35,7 +35,7 @@
             <select id="new_category" name="new_category">
                 <option value="">------</option>
                 {% for category in categories %}
-                    <option value="{{ category.pk }}">{{ category }} ({{ category.name }})</option>
+                    <option value="{{ category.pk }}">{{ category.bcrumb_name }} )</option>
                 {% endfor %}
             </select>
         </div>

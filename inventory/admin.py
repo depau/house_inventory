@@ -68,7 +68,7 @@ edit_icon.short_description = ""
 @admin.register(Item, site=admin_site)
 class ItemAdmin(CustomChangeListModelAdmin):
     ordering = ('location', 'name')
-    fields = (('name', 'location'), ('amount', 'unit'), 'expiration', 'description')
+    fields = (('name', 'location'), ('amount', 'unit'), 'category', 'expiration', 'description')
     search_fields = ('name',)
     list_display = (
         'link_to_name_search', 'link_to_category', 'link_to_location', 'short_amount', 'expiration', 'edit_icon')

@@ -71,7 +71,7 @@ class ItemAdmin(CustomChangeListModelAdmin):
     fields = (('name', 'location'), ('amount', 'unit'), 'expiration', 'description')
     search_fields = ('name',)
     list_display = (
-        'link_to_category', 'link_to_name_search', 'link_to_location', 'short_amount', 'expiration', 'edit_icon')
+        'link_to_name_search', 'link_to_category', 'link_to_location', 'short_amount', 'expiration', 'edit_icon')
     list_display_links = ('edit_icon',)
     list_filter = (ItemsByLocation, ItemsByCategory, 'amount', ExpirationFieldListFilter)
     actions = (move_to_other_location, change_category)
@@ -150,7 +150,7 @@ class LocationAdmin(CustomChangeListModelAdmin, TreeNodeModelAdmin):
         link = urls.reverse("admin:inventory_item_changelist") + f"?location={obj.id}"
         return format_html('<a href="{}" title="{}">{}</a>', link, _("See all items in \"%(name)s\"") % {
             "name": obj.name
-        }, _("Items in %(name)s") % {"name": obj.name})
+        }, _("Items in %(name)s (%(count)d)") % {"name": obj.name, "count": obj.objects_count})
 
     name_link_to_items.short_description = _("items")
 
@@ -171,6 +171,6 @@ class CategoryAdmin(CustomChangeListModelAdmin, TreeNodeModelAdmin):
         link = urls.reverse("admin:inventory_item_changelist") + f"?category={obj.id}"
         return format_html('<a href="{}" title="{}">{}</a>', link, _("See all items in \"%(name)s\"") % {
             "name": obj.name
-        }, _("Items in %(name)s") % {"name": obj.name})
+        }, _("Items in %(name)s (%(count)d)") % {"name": obj.name, "count": obj.objects_count})
 
     name_link_to_items.short_description = _("items")

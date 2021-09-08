@@ -52,7 +52,7 @@ class Category(treenode.models.TreeNodeModel):
 
     @property
     def bcrumb_name(self):
-        return "/".join(map(lambda c: c.name, self.breadcrumbs))
+        return "/".join(map(lambda c: c.name if c else "<404>", self.breadcrumbs))
 
     @property
     def objects_count(self) -> int:

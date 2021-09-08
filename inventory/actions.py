@@ -35,7 +35,10 @@ def move_to_other_location(modeladmin: ModelAdmin, request: HttpRequest, queryse
             }, messages.SUCCESS)
         return None
 
-    objects_name = model_ngettext(queryset)
+    if queryset.count() > 1:
+        objects_name = model_ngettext(queryset)
+    else:
+        objects_name = str(queryset.first())
 
     title = _("Moving %(name)s to new location") % {"name": objects_name}
 
@@ -145,7 +148,7 @@ def create_sections(modeladmin: ModelAdmin, request: HttpRequest, queryset: Quer
         }, messages.SUCCESS)
         return None
 
-    objects_name = model_ngettext(queryset)
+    objects_name = model_ngettext(queryset, n=2)
 
     title = _("Add sections to %(name)s") % {"name": str(location)}
 

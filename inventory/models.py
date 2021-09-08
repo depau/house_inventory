@@ -62,7 +62,7 @@ class Category(treenode.models.TreeNodeModel):
         return count
 
     def __str__(self):
-        return self.name
+        return self.bcrumb_name
 
     class Meta:
         verbose_name = _("category")

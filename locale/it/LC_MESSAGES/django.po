@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-05 14:22+0200\n"
-"PO-Revision-Date: 2021-09-05 14:25+0200\n"
+"POT-Creation-Date: 2021-09-08 23:45+0200\n"
+"PO-Revision-Date: 2021-09-08 23:45+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it\n"
@@ -40,43 +40,43 @@ msgstr "Impossibile spostate %(items)s: nessun luogo selezionato"
 msgid "Successfully moved %(count)d %(items)s."
 msgstr "Spostati %(count)d %(items)s con successo."
 
-#: inventory/actions.py:40
+#: inventory/actions.py:43
 #, python-format
 msgid "Moving %(name)s to new location"
 msgstr "Spostamento di %(name)s in un altro luogo"
 
-#: inventory/actions.py:59
+#: inventory/actions.py:62
 msgid "Change items categories"
 msgstr "Cambia categoria degli oggetti"
 
-#: inventory/actions.py:79
+#: inventory/actions.py:82
 #, python-format
 msgid "Successfully updated %(count)d %(items)s."
 msgstr "Spostati %(count)d %(items)s con successo."
 
-#: inventory/actions.py:86
+#: inventory/actions.py:89
 #, python-format
 msgid "Changing %(name)s categories"
 msgstr "Cambiamento categorie di %(name)s"
 
-#: inventory/actions.py:105
+#: inventory/actions.py:108
 msgid "Create sections"
 msgstr "Crea sezioni"
 
-#: inventory/actions.py:112
+#: inventory/actions.py:115
 msgid "Select exactly one location in order to add sections to it"
 msgstr "Seleziona esattamente un luogo per aggiungere delle sezioni"
 
-#: inventory/actions.py:126
+#: inventory/actions.py:129
 msgid "This is not Microsoft Excel, stop it."
 msgstr "Questo non è Microsoft Excel, smettila."
 
-#: inventory/actions.py:143
+#: inventory/actions.py:146
 #, python-format
 msgid "Successfully created %(count)d %(items)s."
 msgstr "Creati %(count)d %(items)s con successo."
 
-#: inventory/actions.py:150
+#: inventory/actions.py:153
 #, python-format
 msgid "Add sections to %(name)s"
 msgstr "Aggiungi sezioni a %(name)s"
@@ -98,8 +98,8 @@ msgstr "Modifica"
 msgid "Search all %(model_name)s named \"%(name)s\""
 msgstr "Cerca tutti gli %(model_name)s che si chiamano \"%(name)s\""
 
-#: inventory/admin.py:87 inventory/models.py:13 inventory/models.py:37
-#: inventory/models.py:67
+#: inventory/admin.py:87 inventory/models.py:13 inventory/models.py:44
+#: inventory/models.py:81
 msgid "name"
 msgstr "nome"
 
@@ -108,8 +108,8 @@ msgstr "nome"
 msgid "Explore \"%(name)s\""
 msgstr "Esplora \"%(name)s\""
 
-#: inventory/admin.py:97 inventory/list_filters.py:16 inventory/models.py:30
-#: inventory/models.py:71
+#: inventory/admin.py:97 inventory/list_filters.py:16 inventory/models.py:37
+#: inventory/models.py:85
 msgid "location"
 msgstr "luogo"
 
@@ -134,10 +134,10 @@ msgstr "Vedi tutti gli oggetti in \"%(name)s\""
 
 #: inventory/admin.py:153 inventory/admin.py:174
 #, python-format
-msgid "Items in %(name)s"
-msgstr "Oggetti in %(name)s"
+msgid "Items in %(name)s (%(count)d)"
+msgstr "Oggetti in %(name)s (%(count)d)"
 
-#: inventory/admin.py:155 inventory/admin.py:176 inventory/models.py:87
+#: inventory/admin.py:155 inventory/admin.py:176 inventory/models.py:101
 msgid "items"
 msgstr "oggetti"
 
@@ -145,43 +145,43 @@ msgstr "oggetti"
 msgid "inventory"
 msgstr "inventario"
 
-#: inventory/list_filters.py:43 inventory/models.py:54 inventory/models.py:72
+#: inventory/list_filters.py:43 inventory/models.py:68 inventory/models.py:86
 msgid "category"
 msgstr "categoria"
 
-#: inventory/list_filters.py:79
+#: inventory/list_filters.py:80
 msgid "container"
 msgstr "contenitore"
 
-#: inventory/list_filters.py:99
+#: inventory/list_filters.py:101
 msgid "parent"
 msgstr "genitore"
 
-#: inventory/list_filters.py:119 inventory/models.py:73
+#: inventory/list_filters.py:121 inventory/models.py:87
 msgid "expiration"
 msgstr "scadenza"
 
-#: inventory/list_filters.py:140
+#: inventory/list_filters.py:142
 msgid "Any"
 msgstr "Qualsiasi"
 
-#: inventory/list_filters.py:141
+#: inventory/list_filters.py:143
 msgid "Expired"
 msgstr "Scaduto"
 
-#: inventory/list_filters.py:144
+#: inventory/list_filters.py:146
 msgid "Expires this month"
 msgstr "Scade questo mese"
 
-#: inventory/list_filters.py:148
+#: inventory/list_filters.py:150
 msgid "Expires later"
 msgstr "Scadrà più avanti"
 
-#: inventory/list_filters.py:154
+#: inventory/list_filters.py:156
 msgid "Does not expire"
 msgstr "Non scade"
 
-#: inventory/list_filters.py:155
+#: inventory/list_filters.py:157
 msgid "Expires"
 msgstr "Scade"
 
@@ -189,7 +189,7 @@ msgstr "Scade"
 msgid "locator"
 msgstr "localizzatore"
 
-#: inventory/models.py:15 inventory/models.py:68
+#: inventory/models.py:15 inventory/models.py:82
 msgid "description"
 msgstr "descrizione"
 
@@ -198,28 +198,28 @@ msgstr "descrizione"
 msgid "View only locations under \"%(name)s\""
 msgstr "Vedi tutti i luoghi sotto \"%(name)s\""
 
-#: inventory/models.py:31
+#: inventory/models.py:38
 msgid "locations"
 msgstr "luoghi"
 
-#: inventory/models.py:42
+#: inventory/models.py:49
 #, python-format
 msgid "View only categories under \"%(name)s\""
 msgstr "Vedi tutte le categorie sotto \"%(name)s\""
 
-#: inventory/models.py:55
+#: inventory/models.py:69
 msgid "categories"
 msgstr "categorie"
 
-#: inventory/models.py:69
+#: inventory/models.py:83
 msgid "amount"
 msgstr "quantità"
 
-#: inventory/models.py:70
+#: inventory/models.py:84
 msgid "unit"
 msgstr "unità"
 
-#: inventory/models.py:86
+#: inventory/models.py:100
 msgid "item"
 msgstr "oggetto"
 
@@ -229,8 +229,8 @@ msgid "Home"
 msgstr "Home"
 
 #: templates/change_category.html:18
-msgid "Change {{ objects_name }} category"
-msgstr "Cambia la categoria di {{ objects_name }}"
+msgid "Change objects category"
+msgstr "Cambia categoria oggetti"
 
 #: templates/change_category.html:24
 #, python-format
@@ -251,8 +251,9 @@ msgid "Cancel"
 msgstr "Annulla"
 
 #: templates/create_sections.html:18
-msgid "Add sections to {{ locator }}"
-msgstr "Aggiungi sezioni a {{ locator }}"
+#, python-format
+msgid "Add sections to %%(locator)s"
+msgstr "Aggiungi sezioni a %%(name)s"
 
 #: templates/create_sections.html:24
 msgid ""
@@ -320,8 +321,8 @@ msgid "Create"
 msgstr "Crea"
 
 #: templates/move_to_other_location.html:18
-msgid "Move {{ objects_name }} to other location"
-msgstr "Sposta {{ objects_name }} in un altro luogo"
+msgid "Move objects to other location"
+msgstr "Sposta oggetti in un altro luogo"
 
 #: templates/move_to_other_location.html:24
 #, python-format
@@ -331,6 +332,9 @@ msgstr "Spostamento dei seguenti %(objects_name)s in un altro luogo:"
 #: templates/move_to_other_location.html:34
 msgid "New location"
 msgstr "Nuovo luogo"
+
+#~ msgid "Add sections to {{ locator }}"
+#~ msgstr "Aggiungi sezioni a {{ locator }}"
 
 #~ msgid "Shelves / Rows"
 #~ msgstr "Ripiani / Righe"
